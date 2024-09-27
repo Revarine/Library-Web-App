@@ -11,4 +11,15 @@ public class Book
     public virtual Author Author { get; private set; }
     public string ISBN { get; private set; }
     public int Amount { get; private set; }
+
+    public Book(Guid? id, string title, string description, short genreId, Guid authorId, string isbn, int amount)
+    {
+        Id = id ?? Guid.NewGuid();
+        Title = title;
+        Description = description;
+        GenreId = genreId;
+        AuthorId = authorId;
+        ISBN = isbn;
+        Amount = amount;
+    }
 }
