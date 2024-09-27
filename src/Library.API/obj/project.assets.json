@@ -107,6 +107,39 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Library.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Library.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Library.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Library.Application.dll": {}
+        }
+      },
+      "Library.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Library.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Library.Contracts.dll": {}
+        }
+      },
+      "Library.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Library.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Library.Domain.dll": {}
+        }
       }
     }
   },
@@ -451,10 +484,27 @@
         "swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Library.Application/1.0.0": {
+      "type": "project",
+      "path": "../Library.Application/Library.Application.csproj",
+      "msbuildProject": "../Library.Application/Library.Application.csproj"
+    },
+    "Library.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Library.Contracts/Library.Contracts.csproj",
+      "msbuildProject": "../Library.Contracts/Library.Contracts.csproj"
+    },
+    "Library.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Library.Domain/Library.Domain.csproj",
+      "msbuildProject": "../Library.Domain/Library.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Library.Application >= 1.0.0",
+      "Library.Contracts >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.8",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -483,7 +533,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Application\\Library.Application.csproj": {
+              "projectPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Application\\Library.Application.csproj"
+            },
+            "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Contracts\\Library.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Contracts\\Library.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
