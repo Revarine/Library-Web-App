@@ -22,4 +22,7 @@ public class Book
         ISBN = isbn;
         Amount = amount;
     }
+    private Book()
+    {
+    }
 }
