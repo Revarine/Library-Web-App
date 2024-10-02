@@ -2,7 +2,7 @@ using Library.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Library.Infrastructure.Books.Persistence;
+namespace Library.Infrastructure.Repositories.Books.Persistence;
 
 public class BookConfiguration : IEntityTypeConfiguration<Book>
 {

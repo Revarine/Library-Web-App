@@ -6,4 +6,13 @@ public class Author
     public string Name { get; private set; }
     public string Surname { get; private set; }
     public virtual ICollection<Book> Books { get; private set; }
+
+    public Author(Guid id, string name, string surname)
+    {
+        Id = id;
+        Name = name;
+        Surname = surname;
+    }
+
+    private Author() { }
 }
