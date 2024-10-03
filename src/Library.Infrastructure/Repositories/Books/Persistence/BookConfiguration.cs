@@ -10,6 +10,9 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
     {
         builder.HasKey(book => book.Id);
         builder.Property(book => book.Id).ValueGeneratedNever();
+        builder.HasOne(book => book.Author).WithMany(a => a.Books).HasForeignKey(book => book.AuthorId);
+        builder.HasOne(book => book.Genre).WithMany(g => g.Books).HasForeignKey(book => book.GenreId);
+        builder.HasMany(book => book.TakenBooks).WithOne(takenBook => takenBook.Book).HasForeignKey(takenBook => takenBook.BookId);
         //TODO: potom
     }
 }

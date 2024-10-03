@@ -11,6 +11,7 @@ public class GenreConfiguration : IEntityTypeConfiguration<Genre>
     {
         builder.HasKey(genre => genre.Id);
         builder.Property(genre => genre.Id).ValueGeneratedNever();
+        builder.HasMany(genre => genre.Books).WithOne(book => book.Genre).HasForeignKey(book => book.GenreId);
         // TODO: potom
     }
 }

@@ -24,10 +24,12 @@ public class TakenBooksRepository : ITakenBooksRepository
         await _dbContext.TakenBooks.Where(takenBook => takenBook.UserId == userId && takenBook.BookId == bookId).ExecuteDeleteAsync(cancellationToken);
     }
 
+
     public async Task<TakenBook> GetElementByIdAsync(Guid bookId, Guid userId, CancellationToken cancellationToken = default)
     {
         return await _dbContext.TakenBooks.FirstAsync(takenBooks => takenBooks.BookId == bookId && takenBooks.UserId == userId, cancellationToken);
     }
+
 
     public async Task<IEnumerable<TakenBook>> GetElementsAsync(CancellationToken cancellationToken = default)
     {
