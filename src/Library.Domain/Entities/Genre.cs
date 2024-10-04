@@ -6,9 +6,8 @@ public class Genre
     public string Name { get; private set; }
     public virtual ICollection<Book> Books { get; private set; }
 
-    public Genre(short id, string name)
+    public Genre(short? id, string name)
     {
-        Id = id;
         Name = name;
     }
 

@@ -7,11 +7,9 @@ namespace Library.Application.Books.Commands.DeleteBook;
 public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, ErrorOr<Deleted>>
 {
     private readonly IBookRepository _bookRepository;
-    private readonly ITakenBooksRepository _takenBooksRepository;
-    public DeleteBookCommandHandler(IBookRepository bookRepository, ITakenBooksRepository takenBooksRepository)
+    public DeleteBookCommandHandler(IBookRepository bookRepository)
     {
         _bookRepository = bookRepository;
-        _takenBooksRepository = takenBooksRepository;
     }
     public async Task<ErrorOr<Deleted>> Handle(DeleteBookCommand command, CancellationToken cancellationToken)
     {

@@ -7,9 +7,9 @@ public class Author
     public string Surname { get; private set; }
     public virtual ICollection<Book> Books { get; private set; }
 
-    public Author(Guid id, string name, string surname)
+    public Author(Guid? id, string name, string surname)
     {
-        Id = id;
+        Id = id ?? Guid.NewGuid();
         Name = name;
         Surname = surname;
     }
