@@ -17,7 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseStaticFiles();
 app.MapControllerRoute(name: "default", pattern: "{controller}/{action}/{id?}");
 
 app.Run();

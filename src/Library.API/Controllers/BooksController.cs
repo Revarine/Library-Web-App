@@ -63,9 +63,35 @@ public class BooksController : ControllerBase
         );
     }
 
-    [HttpGet]
+
+    [HttpGet("BookImage")]
     public async Task<IActionResult> GetBookImage(Guid bookId)
     {
-        return Ok();
+        var fileName = bookId.ToString();
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", fileName + ".jpg");
+        Console.WriteLine($"Path: {filePath}");
+        if (!System.IO.File.Exists(filePath))
+        {
+            Console.WriteLine("File not found!!");
+            return NotFound();
+        }
+        return new FileStreamResult(new FileStream(filePath, FileMode.Open), "image/jpeg");
+    }
+
+    [HttpPost("AddBookImage")]
+    public async Task<IActionResult> AddBookImage(Guid bookId, IFormFile image)
+    {
+        if (image != null && image.Length > 0)
+        {
+            var fileName = bookId.ToString();
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", fileName + ".jpg");
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await image.CopyToAsync(fileStream);
+            }
+            return Ok();
+        }
+        return Problem();
     }
 }
