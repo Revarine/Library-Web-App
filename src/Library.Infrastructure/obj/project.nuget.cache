@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vVi+akAfXTo=",
+  "dgSpecHash": "p0dzIK46F58=",
   "success": true,
   "projectFilePath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Infrastructure\\Library.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Revarine\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Revarine\\.nuget\\packages\\erroror\\2.0.1\\erroror.2.0.1.nupkg.sha512",
     "C:\\Users\\Revarine\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
     "C:\\Users\\Revarine\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

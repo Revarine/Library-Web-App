@@ -11,7 +11,6 @@ public class Book
     public virtual Author Author { get; private set; }
     public string ISBN { get; private set; }
     public int Amount { get; private set; }
-    public string image { get; private set; } // TODO: to be implemented
     public virtual ICollection<TakenBook> TakenBooks { get; private set; }
 
     public Book(Guid? id, string title, string description, short genreId, Guid authorId, string isbn, int amount)

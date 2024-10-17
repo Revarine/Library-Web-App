@@ -62,4 +62,10 @@ public class BooksController : ControllerBase
             _ => Problem()
         );
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetBookImage(Guid bookId)
+    {
+        return Ok();
+    }
 }
