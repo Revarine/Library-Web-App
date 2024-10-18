@@ -39,6 +39,12 @@ public class BooksController : ControllerBase
 
         return getBookResult.MatchFirst(book => Ok(new BookResponse(book.Id, book.Title, book.Description, book.GenreId, book.AuthorId, book.ISBN, book.Amount)), Error => Problem());
     }
+    [HttpGet("bookISBN:String")]
+    public async Task<IActionResult> GetBookByISBN(string ISBN)
+    {
+        // TODO: to be implemented
+        throw new NotImplementedException();
+    }
 
     [HttpGet]
     public async Task<IActionResult> GetBooks()
@@ -64,11 +70,11 @@ public class BooksController : ControllerBase
     }
 
 
-    [HttpGet("BookImage")]
+    [HttpGet("{bookId:guid}/GetBookImage")]
     public async Task<IActionResult> GetBookImage(Guid bookId)
     {
         var fileName = bookId.ToString();
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", fileName + ".jpg");
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\bookImages", fileName + ".jpg");
         Console.WriteLine($"Path: {filePath}");
         if (!System.IO.File.Exists(filePath))
         {
@@ -78,13 +84,13 @@ public class BooksController : ControllerBase
         return new FileStreamResult(new FileStream(filePath, FileMode.Open), "image/jpeg");
     }
 
-    [HttpPost("AddBookImage")]
+    [HttpPost("{bookId:guid}/AddBookImage")]
     public async Task<IActionResult> AddBookImage(Guid bookId, IFormFile image)
     {
         if (image != null && image.Length > 0)
         {
             var fileName = bookId.ToString();
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", fileName + ".jpg");
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\bookImages", fileName + ".jpg");
 
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {

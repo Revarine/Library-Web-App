@@ -5,4 +5,4 @@ using MediatR;
 
 namespace Library.Application.Genres.Commands.CreateGenre;
 
-public record CreateGenreCommand(string name, short? id = null) : IRequest<ErrorOr<GenreDTO>>;
+public record CreateGenreCommand(string name, int? id = null) : IRequest<ErrorOr<GenreDTO>>;

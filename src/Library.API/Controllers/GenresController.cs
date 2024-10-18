@@ -25,11 +25,11 @@ public class GenresController : ControllerBase
 
         var createGenreResult = await _mediator.Send(command);
 
-        return createGenreResult.MatchFirst(genre => Ok(new GenreResponse(genre.Id, genre.Name)), error => Problem());
+        return createGenreResult.MatchFirst(genre => Ok(new GenreResponse(genre.Id, genre.Name)), error => Problem(error.ToString()));
     }
 
     [HttpGet("{genreId:int}")]
-    public async Task<IActionResult> GetGenre(short genreId)
+    public async Task<IActionResult> GetGenre(int genreId)
     {
         var query = new GetGenreQuery(genreId);
 
@@ -39,7 +39,7 @@ public class GenresController : ControllerBase
     }
 
     [HttpDelete("{genreId:int}")]
-    public async Task<IActionResult> DeleteGenre(short genreId)
+    public async Task<IActionResult> DeleteGenre(int genreId)
     {
         var command = new DeleteGenreCommand(genreId);
 

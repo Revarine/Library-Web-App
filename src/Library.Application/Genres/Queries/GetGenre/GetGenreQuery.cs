@@ -5,4 +5,4 @@ using MediatR;
 
 namespace Library.Application.Genres.Queries.GetGenre;
 
-public record GetGenreQuery(short id) : IRequest<ErrorOr<GenreDTO>>;
+public record GetGenreQuery(int id) : IRequest<ErrorOr<GenreDTO>>;

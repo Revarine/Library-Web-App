@@ -18,12 +18,12 @@ public class GenreRepository : IGenreRepository
         await _dbContext.Genres.AddAsync(genre, cancellationToken);
     }
 
-    public async Task DeleteAsync(short genreId, CancellationToken cancellationToken = default)
+    public async Task DeleteAsync(int genreId, CancellationToken cancellationToken = default)
     {
         await _dbContext.Genres.Where(genre => genre.Id == genreId).ExecuteDeleteAsync(cancellationToken);
     }
 
-    public async Task<Genre> GetElementByIdAsync(short genreId, CancellationToken cancellationToken = default)
+    public async Task<Genre> GetElementByIdAsync(int genreId, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Genres.FirstAsync(genre => genre.Id == genreId, cancellationToken);
     }
@@ -33,7 +33,7 @@ public class GenreRepository : IGenreRepository
         return await _dbContext.Genres.AsNoTracking().ToListAsync(cancellationToken);
     }
 
-    public async Task UpdateAsync(short genreId, string name, CancellationToken cancellationToken = default)
+    public async Task UpdateAsync(int genreId, string name, CancellationToken cancellationToken = default)
     {
         await _dbContext.Genres.Where(genre => genre.Id == genreId).ExecuteUpdateAsync
         (
