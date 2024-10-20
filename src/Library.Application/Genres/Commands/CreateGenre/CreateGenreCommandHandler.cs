@@ -3,7 +3,7 @@ using System.Text;
 using AutoMapper;
 using ErrorOr;
 using FluentValidation;
-using Library.Application.Common.DTO.Books;
+using Library.Application.Common.DTO;
 using Library.Application.Common.Interfaces;
 using Library.Domain.Entities;
 using MediatR;
@@ -38,6 +38,6 @@ public class CreateGenreCommandHandler : IRequestHandler<CreateGenreCommand, Err
         await _genreRepository.CreateAsync(genre);
         await _unitOfWork.CommitChangesAsync();
 
-        return _mapper.Map<GenreDTO>(genre);
+        return genreDTO;
     }
 }

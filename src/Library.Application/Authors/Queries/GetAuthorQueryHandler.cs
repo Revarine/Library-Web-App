@@ -1,6 +1,6 @@
 using AutoMapper;
 using ErrorOr;
-using Library.Application.Common.DTO.Books;
+using Library.Application.Common.DTO;
 using Library.Application.Common.Interfaces;
 using MediatR;
 

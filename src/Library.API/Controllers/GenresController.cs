@@ -1,5 +1,6 @@
 using Library.Application.Genres.Commands.CreateGenre;
 using Library.Application.Genres.Commands.DeleteGenre;
+using Library.Application.Genres.Commands.UpdateGenre;
 using Library.Application.Genres.Queries.GetGenre;
 using Library.Contracts.Genres;
 using MediatR;
@@ -35,7 +36,7 @@ public class GenresController : ControllerBase
 
         var getGenreResult = await _mediator.Send(query);
 
-        return getGenreResult.MatchFirst(genre => Ok(new GenreResponse(genre.Id, genre.Name)), error => Problem());
+        return getGenreResult.MatchFirst(genre => Ok(new GenreResponse(genre.Id, genre.Name)), error => Problem(error.ToString()));
     }
 
     [HttpDelete("{genreId:int}")]
@@ -47,7 +48,20 @@ public class GenresController : ControllerBase
 
         return deleteGenreResult.MatchFirst<IActionResult>(
             _ => NoContent(),
-            _ => Problem()
+            _ => Problem(_.ToString())
+        );
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateGenre(UpdateGenreRequest genreRequest)
+    {
+        var command = new UpdateGenreCommand(genreRequest.genreId, genreRequest.genreName);
+
+        var updateGenreResult = await _mediator.Send(command);
+
+        return updateGenreResult.MatchFirst<IActionResult>(
+            _ => NoContent(),
+            _ => Problem(_.ToString())
         );
     }
 }

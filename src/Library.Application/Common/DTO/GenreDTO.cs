@@ -1,4 +1,4 @@
-namespace Library.Application.Common.DTO.Books;
+namespace Library.Application.Common.DTO;
 
 public class GenreDTO
 {

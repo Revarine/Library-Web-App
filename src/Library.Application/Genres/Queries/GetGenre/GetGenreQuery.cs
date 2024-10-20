@@ -1,5 +1,5 @@
 using ErrorOr;
-using Library.Application.Common.DTO.Books;
+using Library.Application.Common.DTO;
 using Library.Domain.Entities;
 using MediatR;
 

@@ -1,6 +1,7 @@
 using ErrorOr;
 using Library.Application.Authors.Commands.CreateAuthor;
 using Library.Application.Authors.Commands.DeleteAuthor;
+using Library.Application.Authors.Commands.UpdateAuthor;
 using Library.Application.Authors.Queries;
 using Library.Contracts.Authors;
 using MediatR;
@@ -48,7 +49,21 @@ public class AuthorsController : ControllerBase
 
         return deleteAuthorResult.MatchFirst<IActionResult>(
             _ => NoContent(),
-            _ => Problem()
+            _ => Problem(_.ToString())
         );
     }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateAuthor(UpdateAuthorRequest request)
+    {
+        var command = new UpdateAuthorCommand(request.id, request.name, request.surname);
+
+        var updateAuthorResult = await _mediator.Send(command);
+
+        return updateAuthorResult.MatchFirst<IActionResult>(
+            _ => NoContent(),
+            _ => Problem(_.ToString())
+        );
+    }
+
 }

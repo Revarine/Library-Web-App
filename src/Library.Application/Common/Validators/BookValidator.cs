@@ -1,5 +1,5 @@
 using FluentValidation;
-using Library.Application.Common.DTO.Books;
+using Library.Application.Common.DTO;
 
 namespace Library.Application.Common.Validators;
 

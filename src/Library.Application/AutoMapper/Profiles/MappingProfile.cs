@@ -1,5 +1,5 @@
 using AutoMapper;
-using Library.Application.Common.DTO.Books;
+using Library.Application.Common.DTO;
 using Library.Domain.Entities;
 
 namespace Library.Application.AutoMapper.Profiles;
