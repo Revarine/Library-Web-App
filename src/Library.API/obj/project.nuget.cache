@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oMrGCadVk8k=",
+  "dgSpecHash": "IMkGN8cJTGM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj",
+  "projectFilePath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Revarine\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Revarine\\.nuget\\packages\\erroror\\2.0.1\\erroror.2.0.1.nupkg.sha512",

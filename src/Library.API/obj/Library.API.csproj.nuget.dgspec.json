@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj": {}
+    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj": {
+    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj",
+        "projectUniqueName": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj",
         "projectName": "Library.API",
-        "projectPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj",
+        "projectPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj",
         "packagesPath": "C:\\Users\\Revarine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\obj\\",
+        "outputPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Revarine\\AppData\\Roaming\\NuGet\\NuGet.Config"
