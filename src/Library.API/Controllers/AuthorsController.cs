@@ -66,4 +66,13 @@ public class AuthorsController : ControllerBase
         );
     }
 
+    [HttpGet("{authorId:Guid}/Books")]
+    public async Task<IActionResult> GetBooksByAuthorId(Guid authorId)
+    {
+        var query = new GetBookByAuthorIdQuery(authorId);
+
+        var getBookByAuthorIdResult = await _mediator.Send(query);
+
+        return getBookByAuthorIdResult.MatchFirst(books => Ok(books.ToList()), error => Problem());
+    }
 }

@@ -2,6 +2,7 @@ using ErrorOr;
 using Library.Application.Books.Commands.CreateBook;
 using Library.Application.Books.Commands.DeleteBook;
 using Library.Application.Books.Queries.GetBook;
+using Library.Application.Books.Queries.GetBookByISBN;
 using Library.Application.Books.Queries.GetBooks;
 using Library.Contracts.Books;
 using MediatR;
@@ -42,14 +43,17 @@ public class BooksController : ControllerBase
     [HttpGet("bookISBN:String")]
     public async Task<IActionResult> GetBookByISBN(string ISBN)
     {
-        // TODO: to be implemented
-        throw new NotImplementedException();
+        var query = new GetBookByISBNQuery(ISBN);
+
+        var getBookByISBNResult = await _mediator.Send(query);
+
+        return getBookByISBNResult.MatchFirst(book => Ok(new BookResponse(book.Id, book.Title, book.Description, book.GenreId, book.AuthorId, book.ISBN, book.Amount)), Error => Problem());
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetBooks()
+    public async Task<IActionResult> GetBooks(int skip = -1, int take = -1)
     {
-        var query = new GetBooksQuery();
+        var query = new GetBooksQuery(skip, take);
 
         var getBooksResult = await _mediator.Send(query);
 
@@ -100,4 +104,5 @@ public class BooksController : ControllerBase
         }
         return Problem();
     }
+
 }

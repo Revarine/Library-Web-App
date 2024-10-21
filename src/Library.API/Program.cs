@@ -1,3 +1,4 @@
+using Library.API.Middlewares.GlobalExceptionHandler;
 using Library.Application;
 using Library.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
@@ -19,5 +20,5 @@ if (app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 app.MapControllerRoute(name: "default", pattern: "{controller}/{action}/{id?}");
-
+app.UseGlobalExceptionHandling();
 app.Run();

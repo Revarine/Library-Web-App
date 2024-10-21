@@ -20,7 +20,7 @@ public class GetBooksQueryHandler : IRequestHandler<GetBooksQuery, ErrorOr<List<
 
     public async Task<ErrorOr<List<BookDTO>>> Handle(GetBooksQuery request, CancellationToken cancellationToken)
     {
-        var books = await _bookRepository.GetElementsAsync(cancellationToken);
+        var books = await _bookRepository.GetElementsAsync(request.skip, request.take, cancellationToken);
 
         return books is null
         ? Error.NotFound(description: "There is no books")

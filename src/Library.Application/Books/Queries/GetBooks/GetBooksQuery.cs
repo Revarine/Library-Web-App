@@ -5,4 +5,4 @@ using MediatR;
 
 namespace Library.Application.Books.Queries.GetBooks;
 
-public record GetBooksQuery() : IRequest<ErrorOr<List<BookDTO>>>;
+public record GetBooksQuery(int skip, int take) : IRequest<ErrorOr<List<BookDTO>>>;
