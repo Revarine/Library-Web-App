@@ -30,9 +30,8 @@ public class BookRepository : IBookRepository
 
     public async Task<IEnumerable<Book>> GetElementsAsync(int skip, int take, CancellationToken cancellationToken = default)
     {
-        if (!(skip == -1 && take == -1))
-            return await _dbContext.Books.AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
-        return await _dbContext.Books.AsNoTracking().ToListAsync(cancellationToken);
+        if (take == 0) take = 5;
+        return await _dbContext.Books.AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
     }
 
     public async Task UpdateAsync(Guid bookId, Book book, CancellationToken cancellationToken = default)

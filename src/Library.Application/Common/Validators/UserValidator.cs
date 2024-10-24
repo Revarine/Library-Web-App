@@ -16,6 +16,5 @@ public class UserValidator : AbstractValidator<UserDTO>
                     .Matches(@"[a-z]+").WithMessage("Your password must contain at least one lowercase letter.")
                     .Matches(@"[0-9]+").WithMessage("Your password must contain at least one number.")
                     .Matches(@"[\!\?\*\.]+").WithMessage("Your password must contain at least one (!? *.).");
-        // isAdmin'a не будет
     }
 }

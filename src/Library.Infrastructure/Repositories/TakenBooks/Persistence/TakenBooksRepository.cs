@@ -13,9 +13,8 @@ public class TakenBooksRepository : ITakenBooksRepository
     {
         _dbContext = dbContext;
     }
-    public async Task CreateAsync(Guid bookId, Guid userId, DateTime returnTime, CancellationToken cancellationToken = default)
+    public async Task CreateAsync(TakenBook takenBook, CancellationToken cancellationToken = default)
     {
-        var takenBook = new TakenBook(bookId, userId, DateTime.Now, returnTime);
         await _dbContext.TakenBooks.AddAsync(takenBook, cancellationToken);
     }
 

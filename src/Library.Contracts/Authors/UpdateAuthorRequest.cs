@@ -1,3 +1,3 @@
 namespace Library.Contracts.Authors;
 
-public record UpdateAuthorRequest(Guid id, string name, string surname);
+public record UpdateAuthorRequest(Guid id, DateTime dateOfBirth, string country, string name, string surname);

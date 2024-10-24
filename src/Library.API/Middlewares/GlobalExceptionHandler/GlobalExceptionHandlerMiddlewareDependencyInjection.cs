@@ -1,6 +1,6 @@
 namespace Library.API.Middlewares.GlobalExceptionHandler;
 
-public static class GlobalExceptionHandlerMiddlewareDependencyInjection
+public static class GlobalExceptionHandlerMiddlewareExtension
 {
     public static void UseGlobalExceptionHandling(this IApplicationBuilder app)
     {

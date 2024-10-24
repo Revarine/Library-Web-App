@@ -6,6 +6,7 @@ using Library.Application.Books.Queries.GetBookByISBN;
 using Library.Application.Books.Queries.GetBooks;
 using Library.Contracts.Books;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.API.Controllers;
@@ -22,6 +23,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "AdminPolicy")]
     public async Task<IActionResult> CreateBook(CreateBookRequest request)
     {
         var command = new CreateBookCommand(request.title, request.description, request.genreId, request.authorId, request.isbn, request.amount);
@@ -61,11 +63,18 @@ public class BooksController : ControllerBase
     }
 
     [HttpDelete("{bookId:guid}")]
+    [Authorize(Policy = "AdminPolicy")]
     public async Task<IActionResult> DeleteBook(Guid bookId)
     {
         var query = new DeleteBookCommand(bookId);
 
         var deleteBookResult = await _mediator.Send(query);
+        var fileName = bookId.ToString();
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\bookImages", fileName + ".jpg");
+        if (System.IO.File.Exists(filePath))
+        {
+            System.IO.File.Delete(filePath);
+        }
 
         return deleteBookResult.MatchFirst<IActionResult>(
             _ => NoContent(),
@@ -89,6 +98,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost("{bookId:guid}/AddBookImage")]
+    [Authorize(Policy = "AdminPolicy")]
     public async Task<IActionResult> AddBookImage(Guid bookId, IFormFile image)
     {
         if (image != null && image.Length > 0)

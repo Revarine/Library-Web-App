@@ -46,4 +46,9 @@ public class UserRepository : IUserRepository
                 cancellationToken
         );
     }
+
+    public async Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Users.FirstAsync(user => user.Email == email);
+    }
 }

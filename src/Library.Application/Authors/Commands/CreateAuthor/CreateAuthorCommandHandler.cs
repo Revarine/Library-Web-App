@@ -25,7 +25,7 @@ public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, E
 
     public async Task<ErrorOr<AuthorDTO>> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
     {
-        var author = new Author(request.id, request.name, request.surname);
+        var author = new Author(request.id, request.dateOfBirth, request.country, request.name, request.surname);
         var authorDTO = _mapper.Map<AuthorDTO>(author);
 
         var validationResult = await _validator.ValidateAsync(authorDTO);

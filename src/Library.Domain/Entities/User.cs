@@ -9,9 +9,9 @@ public class User
     public bool IsAdmin { get; private set; }
     public virtual ICollection<TakenBook> TakenBooks { get; private set; }
 
-    public User(Guid id, string username, string email, string password, bool isAdmin)
+    public User(Guid? id, string username, string email, string password, bool isAdmin)
     {
-        Id = id;
+        Id = id ?? Guid.NewGuid();
         Username = username;
         Email = email;
         Password = password;

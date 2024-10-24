@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj": {}
+    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj": {
+    "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj",
+        "projectUniqueName": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj",
         "projectName": "Library.API",
-        "projectPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\Library.API.csproj",
+        "projectPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\Library.API.csproj",
         "packagesPath": "C:\\Users\\Revarine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.Api\\obj\\",
+        "outputPath": "C:\\Users\\Revarine\\Desktop\\Library\\Library-Web-App\\src\\Library.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Revarine\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -142,6 +142,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "ErrorOr": {
               "target": "Package",
               "version": "[2.0.1, )"
@@ -153,6 +157,10 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.4.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",

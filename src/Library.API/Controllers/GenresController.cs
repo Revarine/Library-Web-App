@@ -4,6 +4,7 @@ using Library.Application.Genres.Commands.UpdateGenre;
 using Library.Application.Genres.Queries.GetGenre;
 using Library.Contracts.Genres;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.API.Controllers;
@@ -20,13 +21,14 @@ public class GenresController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "AdminPolicy")]
     public async Task<IActionResult> CreateGenre(CreateGenreRequest genreRequest)
     {
         var command = new CreateGenreCommand(genreRequest.name);
 
         var createGenreResult = await _mediator.Send(command);
 
-        return createGenreResult.MatchFirst(genre => Ok(new GenreResponse(genre.Id, genre.Name)), error => Problem(error.ToString()));
+        return createGenreResult.MatchFirst(genre => Ok("Created"), error => Problem(error.ToString()));
     }
 
     [HttpGet("{genreId:int}")]
@@ -40,6 +42,7 @@ public class GenresController : ControllerBase
     }
 
     [HttpDelete("{genreId:int}")]
+    [Authorize(Policy = "AdminPolicy")]
     public async Task<IActionResult> DeleteGenre(int genreId)
     {
         var command = new DeleteGenreCommand(genreId);
@@ -53,6 +56,7 @@ public class GenresController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(Policy = "AdminPolicy")]
     public async Task<IActionResult> UpdateGenre(UpdateGenreRequest genreRequest)
     {
         var command = new UpdateGenreCommand(genreRequest.genreId, genreRequest.genreName);

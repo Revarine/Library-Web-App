@@ -26,7 +26,7 @@ public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, E
         var author = _authorRepository.GetElementByIdAsync(request.authorId);
 
         if (author == null) Error.NotFound("Author not found");
-        var newAuthor = new Author(request.authorId, request.authorName, request.authorSurname);
+        var newAuthor = new Author(request.authorId, request.dateOfBirth, request.country, request.authorName, request.authorSurname);
         var authorDTO = _mapper.Map<AuthorDTO>(newAuthor);
         var validationResult = await _validator.ValidateAsync(authorDTO);
 

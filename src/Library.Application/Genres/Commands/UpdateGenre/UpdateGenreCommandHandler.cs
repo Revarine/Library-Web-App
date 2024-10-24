@@ -23,7 +23,7 @@ public class UpdateGenreCommandHandler : IRequestHandler<UpdateGenreCommand, Err
     }
     public async Task<ErrorOr<Updated>> Handle(UpdateGenreCommand request, CancellationToken cancellationToken)
     {
-        var genre = await _genreRepository.GetElementByIdAsync(request.genreId, cancellationToken); // maybe I need to use DTO in commands instead
+        var genre = await _genreRepository.GetElementByIdAsync(request.genreId, cancellationToken); 
 
         if (genre == null) Error.NotFound("Genre to update not found");
 

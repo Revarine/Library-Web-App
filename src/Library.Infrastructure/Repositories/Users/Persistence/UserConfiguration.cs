@@ -11,6 +11,5 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasKey(user => user.Id);
         builder.Property(user => user.Id).ValueGeneratedNever();
         builder.HasMany(user => user.TakenBooks).WithOne(takenBook => takenBook.User).HasForeignKey(takenBook => takenBook.UserId);
-        // TODO: potom
     }
 }
