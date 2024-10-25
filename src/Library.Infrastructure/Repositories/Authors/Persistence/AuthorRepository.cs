@@ -40,6 +40,8 @@ public class AuthorRepository : IAuthorRepository
             p =>
                 p
                     .SetProperty(e => e.Id, author.Id)
+                    .SetProperty(e => e.DateOfBirth, author.DateOfBirth)
+                    .SetProperty(e => e.Country, author.Country)
                     .SetProperty(e => e.Name, author.Name)
                     .SetProperty(e => e.Surname, author.Surname),
                     cancellationToken

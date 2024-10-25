@@ -1,3 +1,4 @@
+using AutoMapper;
 using ErrorOr;
 using Library.Application.Common.Interfaces;
 using MediatR;
@@ -7,9 +8,11 @@ namespace Library.Application.Books.Commands.DeleteBook;
 public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, ErrorOr<Deleted>>
 {
     private readonly IBookRepository _bookRepository;
-    public DeleteBookCommandHandler(IBookRepository bookRepository)
+    private readonly IUnitOfWork _unitOfWork;
+    public DeleteBookCommandHandler(IBookRepository bookRepository, IUnitOfWork unitOfWork, IMapper mapper)
     {
         _bookRepository = bookRepository;
+        _unitOfWork = unitOfWork;
     }
     public async Task<ErrorOr<Deleted>> Handle(DeleteBookCommand command, CancellationToken cancellationToken)
     {
@@ -20,6 +23,7 @@ public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Error
             return Error.NotFound(description: "Book not found");
         }
         await _bookRepository.DeleteAsync(book.Id, cancellationToken);
+        await _unitOfWork.CommitChangesAsync();
 
         return Result.Deleted;
     }

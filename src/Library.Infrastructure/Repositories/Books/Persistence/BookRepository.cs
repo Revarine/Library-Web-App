@@ -28,9 +28,10 @@ public class BookRepository : IBookRepository
         return await _dbContext.Books.FirstAsync(book => book.Id == bookId, cancellationToken);
     }
 
-    public async Task<IEnumerable<Book>> GetElementsAsync(CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Book>> GetElementsAsync(int skip, int take, CancellationToken cancellationToken = default)
     {
-        return await _dbContext.Books.AsNoTracking().ToListAsync(cancellationToken);
+        if (take == 0) take = 5;
+        return await _dbContext.Books.AsNoTracking().Skip(skip).Take(take).ToListAsync(cancellationToken);
     }
 
     public async Task UpdateAsync(Guid bookId, Book book, CancellationToken cancellationToken = default)
@@ -48,5 +49,15 @@ public class BookRepository : IBookRepository
                     .SetProperty(e => e.Amount, book.Amount),
                     cancellationToken
         );
+    }
+
+    public async Task<Book> GetElementByISBNAsync(string ISBN, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Books.FirstAsync(book => book.ISBN == ISBN, cancellationToken);
+    }
+
+    public async Task<IEnumerable<Book>> GetBooksByAuthorIdAsync(Guid authorId, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Books.AsNoTracking().Where(book => book.AuthorId == authorId).ToListAsync(cancellationToken);
     }
 }

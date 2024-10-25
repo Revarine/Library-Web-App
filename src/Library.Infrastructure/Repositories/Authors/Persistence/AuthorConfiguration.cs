@@ -10,6 +10,6 @@ public class AuthorConfiguration : IEntityTypeConfiguration<Author>
     {
         builder.HasKey(author => author.Id);
         builder.Property(author => author.Id).ValueGeneratedNever();
-        // TODO: potom
+        builder.HasMany(author => author.Books).WithOne(book => book.Author).HasForeignKey(author => author.Id);
     }
 }

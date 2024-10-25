@@ -22,6 +22,14 @@ namespace Library.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DateOfBirth")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -50,7 +58,7 @@ namespace Library.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<short>("GenreId")
+                    b.Property<int>("GenreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ISBN")
@@ -72,7 +80,8 @@ namespace Library.Infrastructure.Migrations
 
             modelBuilder.Entity("Library.Domain.Entities.Genre", b =>
                 {
-                    b.Property<short>("Id")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
