@@ -1,2 +1,2 @@
 # Library-Web-App
-Modsen internship interview task
+to run just ```git clone``` it
